@@ -1,15 +1,16 @@
 FROM ubuntu:latest
 
-# ARG GO_VERSION
 ENV GO_VERSION=1.21.5
+ENV CGO_ENABLED=1
+ENV GOOS=linux
+ENV GOARCH=arm64
 
 RUN apt-get update
-RUN apt-get install -y wget git gcc
+RUN apt-get install -y wget git gcc 
 
-RUN wget -P /tmp "https://dl.google.com/go/go${GO_VERSION}.linux-amd64.tar.gz"
-
-RUN tar -C /usr/local -xzf "/tmp/go${GO_VERSION}.linux-amd64.tar.gz"
-RUN rm "/tmp/go${GO_VERSION}.linux-amd64.tar.gz"
+RUN wget -P /tmp "https://dl.google.com/go/go${GO_VERSION}.linux-${GOARCH}.tar.gz"
+RUN tar -C /usr/local -xzf "/tmp/go${GO_VERSION}.linux-${GOARCH}.tar.gz"
+RUN rm "/tmp/go${GO_VERSION}.linux-${GOARCH}.tar.gz"
 
 # ENV GOPATH /opt/go/code
 ENV PATH /usr/local/go/bin:$PATH
@@ -17,5 +18,4 @@ ENV PATH /usr/local/go/bin:$PATH
 # RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
 
 WORKDIR /opt/go/code
-
 ENTRYPOINT [ "/bin/sh", "-c" ]
