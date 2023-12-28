@@ -16,9 +16,9 @@ func main() {
 	var resultOfAdd float32 = float32(floatNum) + float32(intNum)
 	fmt.Println(resultOfAdd)
 
-	var intNume1 int = 3
-	var intNume2 int = 2
-	fmt.Println(intNume1 / intNume2)
+	var intNumber1 int = 3
+	var intNumber2 int = 2
+	fmt.Println(intNumber1 / intNumber2)
 
 	var myString string = "Hello \nWorld"
 
@@ -33,7 +33,7 @@ world`
 	fmt.Println(myRune)
 
 	var myBoolean bool = false
-	fmt.Println(myBoolean) // default is faulse
+	fmt.Println(myBoolean) // default is false
 
 	const myConst string = "constant"
 	fmt.Println(myConst)
@@ -105,7 +105,7 @@ func playWithArray() {
 	fmt.Println(intArr[1:3])
 	fmt.Println(intArr[1:2]) // just 123!
 
-	fmt.Println(&intArr[0]) // int32 is 4 bytes
+	fmt.Println(&intArr[0]) // int32 is 4 bytes thus the memory location +4 each time
 	fmt.Println(&intArr[1])
 	fmt.Println(&intArr[2])
 
